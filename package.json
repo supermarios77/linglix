@@ -12,6 +12,7 @@
   "devDependencies": {
     "@workspace/eslint-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
+    "eslint": "^9.39.2",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
     "prettier": "^3.8.1",
@@ -23,10 +24,13 @@
     "node": ">=20"
   },
   "lint-staged": {
-    "*.{js,ts,jsx,tsx}": [
-      "pnpm turbo lint --"
+    "apps/web/**/*.{js,jsx,ts,tsx}": [
+      "pnpm --filter web exec eslint --max-warnings 0"
     ],
-    "*.{json,md}": [
+    "packages/ui/**/*.{js,jsx,ts,tsx}": [
+      "pnpm --filter @workspace/ui exec eslint --max-warnings 0"
+    ],
+    "*.{json,md,mdx,yml,yaml,css,scss}": [
       "pnpm prettier --write"
     ]
   }
