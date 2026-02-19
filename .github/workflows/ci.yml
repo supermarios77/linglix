@@ -19,8 +19,6 @@ jobs:
           fetch-depth: 0 # Needed for turbo affected detection
 
       - uses: pnpm/action-setup@v4
-        with:
-          version: 10 # or latest stable
 
       - uses: actions/setup-node@v4
         with:
@@ -44,7 +42,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           cache: "pnpm"
 
       - name: Install
@@ -65,7 +63,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           cache: "pnpm"
 
       - name: Install
@@ -91,7 +89,7 @@ jobs:
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           cache: "pnpm"
       - run: pnpm install --frozen-lockfile
       - run: pnpm --filter @linglix/e2e playwright install --with-deps
