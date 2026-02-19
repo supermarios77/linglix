@@ -12,7 +12,9 @@
     "lint:staged": "eslint --max-warnings 0",
     "typecheck": "tsc --noEmit",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "test:e2e": "turbo run test:e2e --filter=@linglix/e2e",
+    "test:e2e:ui": "turbo run test:e2e --filter=@linglix/e2e -- test:ui"
   },
   "dependencies": {
     "@workspace/ui": "workspace:*",
