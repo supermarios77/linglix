@@ -33,6 +33,8 @@
   },
   "globalEnv": [
     "NODE_ENV",
+    "DATABASE_URL",
+    "DATABASE_URL_DIRECT",
     "NEXT_PUBLIC_POSTHOG_KEY",
     "NEXT_PUBLIC_POSTHOG_HOST",
     "POSTHOG_API_KEY",
