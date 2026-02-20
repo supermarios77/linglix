@@ -1,4 +1,4 @@
-import sharedPreset from "@repo/jest-config/jest-preset.js";
+import sharedPreset from "@repo/jest-config/jest.config.js";
 
 export default {
   ...sharedPreset,

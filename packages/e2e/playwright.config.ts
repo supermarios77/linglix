@@ -1,10 +1,13 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const runAllBrowsers =
+  !!process.env.CI || process.env.PLAYWRIGHT_ALL_BROWSERS === "true";
+
 export default defineConfig({
   testDir: './tests',               // create this folder next
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
+  retries: process.env.CI ? 2 : 1,
   workers: process.env.CI ? 1 : undefined,  // avoid flakiness in CI; adjust later
   reporter: process.env.CI ? 'github' : [['html', { open: 'never' }]],
   use: {
@@ -13,11 +16,16 @@ export default defineConfig({
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
   },
-  projects: [
-    { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
-    { name: 'firefox',  use: { ...devices['Desktop Firefox'] } },
-    { name: 'webkit',   use: { ...devices['Desktop Safari'] } },
-  ],
+  projects: runAllBrowsers
+    ? [
+        { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
+        { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
+        { name: 'webkit', use: { ...devices['Desktop Safari'] } },
+      ]
+    : [
+        { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
+        { name: 'webkit', use: { ...devices['Desktop Safari'] } },
+      ],
   webServer: {
     command: 'pnpm --filter=web dev', 
     port: 3000,

@@ -13,6 +13,10 @@ const fontMono = Geist_Mono({
   variable: "--font-mono",
 })
 
+export const metadata = {
+  title: "Linglix",
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{

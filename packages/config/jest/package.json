@@ -1,6 +1,6 @@
 {
   "name": "@repo/jest-config",
   "version": "1.0.0",
-  "main": "jest-preset.js",
+  "main": "jest.config.js",
   "private": true
 }

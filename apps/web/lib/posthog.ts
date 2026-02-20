@@ -1,6 +1,12 @@
 import { PostHog } from 'posthog-node'
 
-export const posthogServer = new PostHog(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
-  host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
-  flushAt: 1, flushInterval: 0
-})
+const posthogKey = process.env.POSTHOG_API_KEY || process.env.NEXT_PUBLIC_POSTHOG_KEY
+const posthogHost = process.env.POSTHOG_HOST || process.env.NEXT_PUBLIC_POSTHOG_HOST
+
+export const posthogServer = posthogKey
+  ? new PostHog(posthogKey, {
+      host: posthogHost,
+      flushAt: 1,
+      flushInterval: 0,
+    })
+  : null
