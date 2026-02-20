@@ -7,7 +7,7 @@ const repoRoot = path.resolve(__dirname, "..", "..");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ["@workspace/ui"],
+  transpilePackages: ["@workspace/ui", "@workspace/db"],
   turbopack: {
     root: repoRoot,
   },
